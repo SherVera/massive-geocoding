@@ -62,7 +62,6 @@ router.post("/upload", async function(req, res) {
       // }
     }
     for (let i of Sheet1) {
-      console.log(i)
       const { data } = await client.geocode(
         {
           params: {
