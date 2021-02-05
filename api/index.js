@@ -93,6 +93,10 @@ router.post("/upload", async function(req, res) {
   }
 });
 
+router.get("/example", function (req, res) {
+  console.log('object');
+})
+
 app.use("/api", router);
 
 app.listen(5000, () => console.log("Servicio activo en puerto:", 5000));
