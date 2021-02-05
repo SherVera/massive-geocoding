@@ -76,7 +76,6 @@ export default {
       })
     },
     getFile (name) {
-      console.log(name)
       this.$api.get(`download/${name}`, {
         responseType: 'blob',
         headers:
