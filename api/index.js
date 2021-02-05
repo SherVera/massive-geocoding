@@ -40,9 +40,14 @@ router.post("/upload", async function(req, res) {
 
     const dataTable = [];
 
-    const { Sheet1 } = excelToJson({ sourceFile: uploadPath });
-
-    Sheet1.shift();
+    const result = await excelToJson({
+      sourceFile: uploadPath,
+      header: {
+        // Is the number of rows that will be skipped and will not be present at our result object. Counting from top to bottom
+        rows: 1
+      }
+    });
+    const sheet = Object.keys(result)[0];
     var workbook = new Excel.Workbook();
     var ws = workbook.addWorksheet("Coordenadas y Direcciones");
     workbook.creator = "vera8german@gmail.com";
@@ -61,8 +66,7 @@ router.post("/upload", async function(req, res) {
       ws.getColumn(parseInt(i) + 1).key = cols[i];
       // }
     }
-    console.log(process.env.API_KEY)
-    for (let i of Sheet1) {
+    for (let i of result[sheet]) {
       const { data } = await client.geocode(
         {
           params: {
