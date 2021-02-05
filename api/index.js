@@ -21,15 +21,18 @@ const client = new Client({});
 const stylesExcel = require('./excel-styles')
 
 app.get("/api/download/:filename", function (req, res) {
+  console.log('download')
   const path = `${__dirname}/files/${req.params.filename}`
   res.download(path)
 })
 
 app.post("/api/upload", async function (req, res) {
+  console.log('confirm')
   try {
     if (!req.files || Object.keys(req.files).length === 0) {
       return res.status(400).send("No hay archivos");
     }
+    console.log(req.files.file)
     // Nombre del Archivo
     const sampleFile = req.files.file;
     const uploadPath = `${__dirname}/files/${sampleFile.name}`;
@@ -60,6 +63,7 @@ app.post("/api/upload", async function (req, res) {
       // }
     }
     for (let i of Sheet1) {
+      console.log(i)
       const { data } = await client.geocode(
         {
           params: {
