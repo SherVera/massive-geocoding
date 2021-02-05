@@ -31,7 +31,6 @@ router.post("/upload", async function(req, res) {
     if (!req.files || Object.keys(req.files).length === 0) {
       return res.status(400).send("No hay archivos");
     }
-    console.log(req.files.file)
     // Nombre del Archivo
     const sampleFile = req.files.file;
     const uploadPath = `${__dirname}/files/${sampleFile.name}`;
@@ -92,10 +91,6 @@ router.post("/upload", async function(req, res) {
     res.status(500).send({ message: "Error" });
   }
 });
-
-router.get("/example", function (req, res) {
-  console.log('object');
-})
 
 app.use("/api", router);
 
