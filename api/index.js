@@ -20,12 +20,12 @@ const client = new Client({});
 
 const stylesExcel = require('./excel-styles')
 
-app.get("api/download/:filename", function (req, res) {
+app.get("/api/download/:filename", function (req, res) {
   const path = `${__dirname}/files/${req.params.filename}`
   res.download(path)
 })
 
-app.post("api/upload", async function (req, res) {
+app.post("/api/upload", async function (req, res) {
   try {
     if (!req.files || Object.keys(req.files).length === 0) {
       return res.status(400).send("No hay archivos");
