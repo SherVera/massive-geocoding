@@ -26,11 +26,12 @@ router.get("/download/:filename", function(req, res) {
   res.download(path);
 });
 
-router.post("/upload", async function (req, res) {
+router.post("/upload", async function(req, res) {
   try {
     if (!req.files || Object.keys(req.files).length === 0) {
       return res.status(400).send("No hay archivos");
     }
+    console.log(req.files.file)
     // Nombre del Archivo
     const sampleFile = req.files.file;
     const uploadPath = `${__dirname}/files/${sampleFile.name}`;
@@ -62,6 +63,7 @@ router.post("/upload", async function (req, res) {
       // }
     }
     for (let i of Sheet1) {
+      console.log(i)
       const { data } = await client.geocode(
         {
           params: {
