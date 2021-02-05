@@ -2,7 +2,7 @@
   "name": "geocoding-massive",
   "version": "0.0.1",
   "description": "Geocoding data, get coordinates by address. Import file and response Excel File",
-  "productName": "Quasar App",
+  "productName": "Import & Export - Geocoding",
   "author": "German Vera(SherVera <vera8german@gmail.com>)",
   "private": true,
   "scripts": {
