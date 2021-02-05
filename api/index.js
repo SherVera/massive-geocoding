@@ -26,7 +26,7 @@ router.get("/download/:filename", function(req, res) {
   res.download(path);
 });
 
-router.post("/upload", async function(req, res) {
+router.post("/upload", async function (req, res) {
   try {
     if (!req.files || Object.keys(req.files).length === 0) {
       return res.status(400).send("No hay archivos");
